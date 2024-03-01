@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { useUserContext } from "./context/UserContext";
+import { useProductosContext } from "./context/ProductosContext";
+
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
@@ -11,8 +14,6 @@ import PumbaPlus from "./pages/PumbaPlus/PumbaPlus";
 import ThanksPage from "./pages/ThanksCLI/ThanksPage";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Promotions from "./pages/Promotions/Promotions";
-import { useUserContext } from "./context/UserContext";
-import { useProductosContext } from "./context/ProductosContext";
 
 const App = () => {
   const { user, setUser } = useUserContext();
@@ -61,25 +62,27 @@ const App = () => {
   }, []);
 
 
-  return (
-    <div className="w-full bg-white text-xs relative">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Shop" element={<Shop/>}/>
-          <Route path="/Shop/:productId" element={<ProductDetails/>}/>
-          <Route path="/Shop/Promotions" element={<Promotions/>}/>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signin" element={<Signin />} />
-          <Route path="/Cart" element={<Cart />} />
-          <Route path="/PumbaPlus" element={<PumbaPlus />} />
-          <Route path="/Thanks" element={<ThanksPage/>}/>
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
-  );
+
+return (
+  <div className="w-full bg-white text-xs relative">
+    <HashRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Shop" element={<Shop/>}/>
+        <Route path="/Shop/:productId" element={<ProductDetails/>}/>
+        <Route path="/Shop/Promotions" element={<Promotions/>}/>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Signin" element={<Signin />} />
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="/PumbaPlus" element={<PumbaPlus />} />
+        <Route path="/Thanks" element={<ThanksPage/>}/>
+      </Routes>
+      <Footer />
+    </HashRouter>
+  </div>
+);
+
 };
 
 export default App;

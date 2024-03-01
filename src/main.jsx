@@ -5,6 +5,7 @@ import { UserProvider } from "./context/UserContext.jsx";
 import { ProductosProvider } from "./context/ProductosContext.jsx";
 import "./index.css";
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ProductosProvider>
